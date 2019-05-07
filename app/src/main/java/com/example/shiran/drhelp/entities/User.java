@@ -12,7 +12,7 @@ public class User {
     private String password;
     private Boolean available;
     private String language;
-    private String token = "default_token";
+    private String token;
 
     public User() {
     }
