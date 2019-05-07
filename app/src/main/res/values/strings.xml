@@ -15,4 +15,7 @@
     <string name="resetPassword">Reset Password</string>
     <string name="contactList">Click here to see the contact list</string>
     <string name="end">End Call</string>
+    <string name="morn">Morn 08–15</string>
+    <string name="eve">Eve 15–22</string>
+    <string name="confirm">Confirm</string>
 </resources>
