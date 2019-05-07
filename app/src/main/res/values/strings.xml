@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">DrHelp</string>
+
+    <string name="email">Enter your Email</string>
+    <string name="password">Enter your Password</string>
+    <string name="login">Login</string>
+    <string name="register_link">New to DrHelp? Register here!</string>
+    <string name="forgot_password_link">Forgot your Password?</string>
+    <string name="firstName">Enter your First Name</string>
+    <string name="lastName">Enter your Last Name</string>
+    <string name="register">Register</string>
+    <string name="dateOfBirth">Enter your Date of birth</string>
+    <string name="forgotPassword">Forgot your Password?</string>
+    <string name="forgotPassword_label">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="resetPassword">Reset Password</string>
+    <string name="contactList">Click here to see the contact list</string>
+    <string name="end">End Call</string>
+</resources>
