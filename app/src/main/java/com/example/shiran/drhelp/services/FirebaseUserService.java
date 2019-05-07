@@ -61,7 +61,7 @@ public class FirebaseUserService extends UserServiceObservable {
         firebaseAuth.createUserWithEmailAndPassword(
                 registrationForm.getEmail(), registrationForm.getPassword())
                 .addOnCompleteListener(activity,
-                        task ->onRegistrationComplete(task, registrationForm));
+                        task -> onRegistrationComplete(task, registrationForm));
     }
 
     private void onRegistrationComplete(final Task<AuthResult> task, RegistrationForm registrationForm){
@@ -123,11 +123,11 @@ public class FirebaseUserService extends UserServiceObservable {
             publishAboutLoggingIn(observer -> {observer.onLoginFailed();
             return null;
             });
-        } else {
+        }
+        else {
             publishAboutLoggingIn(observer -> {observer.onLoginSucceed();
             loadCurrentUser();
-
-                return null;
+            return null;
             });
         }
     }

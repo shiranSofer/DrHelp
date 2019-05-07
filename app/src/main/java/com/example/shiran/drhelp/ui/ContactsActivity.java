@@ -1,5 +1,6 @@
 package com.example.shiran.drhelp.ui;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +17,10 @@ import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.FirebaseUserService;
 import com.example.shiran.drhelp.services.UserService;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ContactsActivity extends AppCompatActivity {
@@ -31,20 +34,20 @@ public class ContactsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts);
 
+        setContentView(R.layout.activity_contacts);
         userService = FirebaseUserService.getInstance();
         recyclerView = findViewById(R.id.recycler_view);
 
+        Gson gson = new Gson();
+
+        Intent intent = getIntent();
+        String usersListJSON = intent.getStringExtra("usersList");
+        userList = Arrays.asList(gson.fromJson(usersListJSON, User[].class));
         showContactList();
     }
 
     private void showContactList() {
-        userList = new ArrayList<>();
-        String userId = userService.getCurrentUserId();
-        userList = userService.getAllAvailableUsers(userId);
-        Log.d("current user id", userId);
-
         userAdapter = new UserAdapter(this, userList);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
