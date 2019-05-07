@@ -14,12 +14,13 @@ public abstract class NotificationServiceObservable  implements NotificationServ
         observers = new HashSet<>();
     }
 
+    //commit test - shiran
 
     public void subscribe(NotificationServiceObserver observer){
         observers.add(observer);
     }
 
-    protected void fireNotficationSent(){
+    protected void fireNotificationSent(){
         for (NotificationServiceObserver observer: observers) {
             observer.onNotificationSucceed();
         }
