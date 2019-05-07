@@ -44,8 +44,6 @@ public class FirebaseUserService extends UserServiceObservable {
         databaseReference = firebaseDatabase.getReference("users");
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        acquireToken(firebaseAuth, firestore);
-        currentUserId = firebaseAuth.getCurrentUser().getUid();
     }
 
     /** Singleton **/
@@ -61,7 +59,7 @@ public class FirebaseUserService extends UserServiceObservable {
         firebaseAuth.createUserWithEmailAndPassword(
                 registrationForm.getEmail(), registrationForm.getPassword())
                 .addOnCompleteListener(activity,
-                        task ->onRegistrationComplete(task, registrationForm));
+                        task -> onRegistrationComplete(task, registrationForm));
     }
 
     private void onRegistrationComplete(final Task<AuthResult> task, RegistrationForm registrationForm){
@@ -123,11 +121,14 @@ public class FirebaseUserService extends UserServiceObservable {
             publishAboutLoggingIn(observer -> {observer.onLoginFailed();
             return null;
             });
-        } else {
-            publishAboutLoggingIn(observer -> {observer.onLoginSucceed();
-            loadCurrentUser();
-
-                return null;
+        }
+        else {
+            publishAboutLoggingIn(observer -> {
+                observer.onLoginSucceed();
+                acquireToken(firebaseAuth, firestore);
+                currentUserId = firebaseAuth.getCurrentUser().getUid();
+                loadCurrentUser();
+            return null;
             });
         }
     }
@@ -234,7 +235,9 @@ public class FirebaseUserService extends UserServiceObservable {
                 user.setEmail(data.get("email").toString());
                 user.setFirstName(data.get("firstName").toString());
                 user.setLastName(data.get("lastName").toString());
-                user.setToken(data.get("token").toString());
+                Object token = data.get("token");
+                user.setToken(token.toString());
+
                 currentUser = user;
             }
         });
