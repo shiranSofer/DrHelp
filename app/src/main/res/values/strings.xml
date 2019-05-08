@@ -18,4 +18,6 @@
     <string name="morn">Morn 08–15</string>
     <string name="eve">Eve 15–22</string>
     <string name="confirm">Confirm</string>
+    <string name="shiftTitle">My weekly shifts</string>
+
 </resources>
