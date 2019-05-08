@@ -1,82 +1,52 @@
 {
   "project_info": {
-    "project_number": "113152210701",
-    "firebase_url": "https://DrHelp-b8064.firebaseio.com",
-    "project_id": "DrHelp-b8064",
-    "storage_bucket": "DrHelp-b8064.appspot.com"
+    "project_number": "199441529995",
+    "firebase_url": "https://drhelp-b8064.firebaseio.com",
+    "project_id": "drhelp-b8064",
+    "storage_bucket": "drhelp-b8064.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:113152210701:android:4f1e839fbf4b712a",
-        "android_client_info": {
-          "package_name": "com.example.shiran.dehelp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "113152210701-nef49lj8ceev9c427l59s123bggt9m1p.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.shiran.dehelp",
-            "certificate_hash": "4f4156e4b78d7a25fe18996efd6551c400a6257c"
-          }
-        },
-        {
-          "client_id": "113152210701-ikght6p7req7lv7qqf45l9rlfoqsgeva.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyALbddCvvqIT99KuNGXttUwGmaY56wNYSg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "113152210701-ikght6p7req7lv7qqf45l9rlfoqsgeva.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:113152210701:android:5c6ffd6e853ff4e7",
+        "mobilesdk_app_id": "1:199441529995:android:5c6ffd6e853ff4e7",
         "android_client_info": {
           "package_name": "com.example.shiran.drhelp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "113152210701-m43sgh7r7ed5i1h68reqk20ujjjuqpkj.apps.googleusercontent.com",
+          "client_id": "199441529995-fmpbd7hbn7nii4hnm2c2d4415qfvpvvm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.shiran.drhelp",
-            "certificate_hash": "4f4156e4b78d7a25fe18996efd6551c400a6257c"
+            "certificate_hash": "e6e945d374bb3b7a88ddec6c18123584fda82d4e"
           }
         },
         {
-          "client_id": "113152210701-ikght6p7req7lv7qqf45l9rlfoqsgeva.apps.googleusercontent.com",
+          "client_id": "199441529995-kqvp2ov4n013irge05fjleh6tp4a6t9i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyALbddCvvqIT99KuNGXttUwGmaY56wNYSg"
+          "current_key": "AIzaSyCYzaUYzN7MyYQueQoXOrAJdKUHUCq1oYs"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 1
+        },
         "appinvite_service": {
+          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "113152210701-ikght6p7req7lv7qqf45l9rlfoqsgeva.apps.googleusercontent.com",
+              "client_id": "199441529995-kqvp2ov4n013irge05fjleh6tp4a6t9i.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
         }
       }
     }

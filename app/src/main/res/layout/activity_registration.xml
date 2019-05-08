@@ -110,7 +110,8 @@
                         android:text="@string/translatorRole"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/colorPrimary"
+                        android:checked="true"/>
                 </RadioGroup>
             </android.support.design.widget.TextInputLayout>
 
@@ -126,7 +127,7 @@
                     android:inputType="numberDecimal"
                     android:hint="@string/license"
                     android:textSize="20sp"
-                    android:visibility="invisible"/>
+                    android:visibility="gone" />
             </android.support.design.widget.TextInputLayout>
 
 
