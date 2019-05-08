@@ -1,16 +1,16 @@
 {
   "project_info": {
     "project_number": "113152210701",
-    "firebase_url": "https://drvideo-aff6f.firebaseio.com",
-    "project_id": "drvideo-aff6f",
-    "storage_bucket": "drvideo-aff6f.appspot.com"
+    "firebase_url": "https://DrHelp-b8064.firebaseio.com",
+    "project_id": "DrHelp-b8064",
+    "storage_bucket": "DrHelp-b8064.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:113152210701:android:4f1e839fbf4b712a",
         "android_client_info": {
-          "package_name": "com.example.shiran.drhelp"
+          "package_name": "com.example.shiran.dehelp"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "113152210701-nef49lj8ceev9c427l59s123bggt9m1p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.natali.drvideo",
+            "package_name": "com.example.shiran.dehelp",
             "certificate_hash": "4f4156e4b78d7a25fe18996efd6551c400a6257c"
           }
         },
@@ -51,6 +51,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "113152210701-m43sgh7r7ed5i1h68reqk20ujjjuqpkj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shiran.drhelp",
+            "certificate_hash": "4f4156e4b78d7a25fe18996efd6551c400a6257c"
+          }
+        },
         {
           "client_id": "113152210701-ikght6p7req7lv7qqf45l9rlfoqsgeva.apps.googleusercontent.com",
           "client_type": 3
