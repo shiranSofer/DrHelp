@@ -212,6 +212,11 @@ public class FirebaseUserService extends UserServiceObservable {
     }
 
     @Override
+    public void setUserShifts(String shifts) {
+
+    }
+
+    @Override
     public String getCurrentUserName() {
         return firebaseAuth.getCurrentUser().getDisplayName();
     }

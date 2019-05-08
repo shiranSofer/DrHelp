@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.shiran.drhelp.R;
@@ -23,6 +25,9 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
     private TextInputEditText editText_userLastName;
     private TextInputEditText editText_userEmail;
     private TextInputEditText editText_userPassword;
+    private RadioGroup radioGroup_role;
+    private RadioButton radioButton_doctor;
+    private RadioButton radioButton_translator;
     private MaterialButton button_Register;
     private UserService userService;
 
@@ -42,9 +47,10 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
         String lastName = editText_userLastName.getText().toString().trim();
         String email = editText_userEmail.getText().toString().trim();
         String password = editText_userPassword.getText().toString().trim();
+        String role = checkRole();
 
         RegistrationForm registrationForm = new RegistrationForm(
-                firstName, lastName, email, password);
+                firstName, lastName, email, password, role);
 
         if(!isValidForm(registrationForm)){
             Log.d("register-user:", "invalid form.");
@@ -54,11 +60,21 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
         userService.registerUser(registrationForm, this);
     }
 
+    private String checkRole() {
+        RadioButton radioButton_role = findViewById(radioGroup_role.getCheckedRadioButtonId());
+        if(radioButton_doctor == radioButton_role) return "Doctor";
+        else if(radioButton_translator == radioButton_role) return "Translator";
+        else return "role error";
+    }
+
     private void initRegistrationReferences(){
         editText_userFirstName = findViewById(R.id.firstName_editText_register);
         editText_userLastName = findViewById(R.id.lastName_editText_register);
         editText_userEmail = findViewById(R.id.email_editText_register);
         editText_userPassword = findViewById(R.id.password_editText_register);
+        radioGroup_role = findViewById(R.id.role_radio_group_registration);
+        radioButton_doctor = findViewById(R.id.doctor_radio_registration);
+        radioButton_translator = findViewById(R.id.translator_radio_registration);
         button_Register = findViewById(R.id.btn_register);
     }
 
@@ -80,8 +96,7 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
             editText_userPassword.setError("Password Required.");
             return false;
         }
-
-        return true;
+        return !registrationForm.getRole().equals("role error");
     }
 
     public void onUserRegistrationSucceed(User user) {

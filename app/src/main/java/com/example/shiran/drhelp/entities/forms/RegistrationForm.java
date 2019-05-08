@@ -7,13 +7,15 @@ public class RegistrationForm {
     private String lastName;
     private String email;
     private String password;
+    private String role;
     private String language;
 
-    public RegistrationForm(String firstName, String lastName, String email, String password) {
+    public RegistrationForm(String firstName, String lastName, String email, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     public String getFirstName() {
@@ -44,6 +46,10 @@ public class RegistrationForm {
         this.email = email;
     }
 
+    public String getRole() { return role; }
+
+    public void setRole(String role) { this.role = role; }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -53,7 +59,8 @@ public class RegistrationForm {
                 email,
                 password,
                 false,
-                language);
+                language,
+                role);
     }
 
     @Override
@@ -63,6 +70,7 @@ public class RegistrationForm {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role +'\'' +
                 '}';
     }
 }

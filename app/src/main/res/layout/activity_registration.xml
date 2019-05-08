@@ -85,6 +85,50 @@
                     android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioGroup
+                    android:id="@+id/role_radio_group_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/doctor_radio_registration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/doctorRole"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"/>
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/translator_radio_registration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/translatorRole"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"/>
+                </RadioGroup>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/doctor_license_editText_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/license"
+                    android:textSize="20sp"
+                    android:visibility="invisible"/>
+            </android.support.design.widget.TextInputLayout>
+
 
             <!-- Register Button -->
 

@@ -41,6 +41,7 @@ public interface UserService {
 
     User getUserByEmail(String email);
 
-
     User getCurrentUser();
+
+    void setUserShifts(String shifts);
 }

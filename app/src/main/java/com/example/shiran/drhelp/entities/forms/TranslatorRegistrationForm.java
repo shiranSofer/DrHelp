@@ -7,9 +7,9 @@ public class TranslatorRegistrationForm extends RegistrationForm {
 
     private Map<String,String> shiftBoard; //<id,Day+ShiftTime>
 
-    public TranslatorRegistrationForm(String firstName, String lastName, String email, String password, HashMap<String,String> shiftTable) {
+    public TranslatorRegistrationForm(String firstName, String lastName, String email, String password, String role, HashMap<String,String> shiftTable) {
 
-        super(firstName, lastName, email, password);
+        super(firstName, lastName, email, password, role);
         setShiftBoard(shiftTable);
     }
 

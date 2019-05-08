@@ -11,9 +11,9 @@ public class Translator extends User {
     private HashMap<DatePicker, TimePicker> shiftsBoard;
 
     public Translator(String id, String firstName, String lastName, String email,
-                      String password, Boolean available, String language, HashMap<DatePicker,TimePicker>shiftBoard) {
+                      String password, Boolean available, String language, String role, HashMap<DatePicker,TimePicker>shiftBoard) {
 
-        super(id, firstName, lastName, email, password, available, language);
+        super(id, firstName, lastName, email, password, available, language, role);
         shiftBoard = new HashMap<>();
         setShiftsBoard(shiftBoard);
     }

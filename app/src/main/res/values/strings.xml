@@ -8,6 +8,7 @@
     <string name="forgot_password_link">Forgot your Password?</string>
     <string name="firstName">Enter your First Name</string>
     <string name="lastName">Enter your Last Name</string>
+    <string name="license">Enter your license number</string>
     <string name="register">Register</string>
     <string name="dateOfBirth">Enter your Date of birth</string>
     <string name="forgotPassword">Forgot your Password?</string>
@@ -19,5 +20,8 @@
     <string name="eve">Eve 15–22</string>
     <string name="confirm">Confirm</string>
     <string name="shiftTitle">My weekly shifts</string>
+    <string name="doctorRole">I\'m a doctor</string>
+    <string name="translatorRole">I\'m a translator</string>
+
 
 </resources>

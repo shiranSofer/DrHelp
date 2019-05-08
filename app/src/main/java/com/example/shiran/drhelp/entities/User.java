@@ -13,6 +13,7 @@ public class User {
     private Boolean available;
     private String language;
     private String token;
+    private String role;
 
     public User() {
     }
@@ -29,7 +30,7 @@ public class User {
     }
 
     public User(String id, String firstName, String lastName,
-                String email, String password, Boolean available, String language) {
+                String email, String password, Boolean available, String language, String role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,7 +38,10 @@ public class User {
         this.password = password;
         this.available = available;
         this.language = language;
+        this.role = role;
     }
+
+
 
     public String getId() {
         return id;
@@ -103,6 +107,10 @@ public class User {
         this.token = token;
     }
 
+    public String getRole() { return role; }
+
+    public void setRole(String role) { this.role = role; }
+
     @Override
     public String toString() {
         return "User{" +
@@ -113,6 +121,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", available='" + available + '\'' +
                 ", language='" + language + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
