@@ -51,7 +51,7 @@ public class AvailabilityActivity extends AppCompatActivity {
     }
 
     private void onSwitchButtonPressed(CompoundButton compoundButton, boolean isChecked) {
-        userService.setUserStatuse(isChecked);
+        userService.setUserStatus(isChecked);
         if(isChecked) {
             textView_status.setText("You are available to translate now");
         } else {

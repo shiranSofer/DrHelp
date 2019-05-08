@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.shiran.drhelp.R;
-import com.example.shiran.drhelp.entities.RegistrationForm;
+import com.example.shiran.drhelp.entities.forms.RegistrationForm;
 import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.FirebaseUserService;
 import com.example.shiran.drhelp.services.observers.UserRegistrationObserver;

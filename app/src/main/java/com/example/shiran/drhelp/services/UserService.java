@@ -2,7 +2,7 @@ package com.example.shiran.drhelp.services;
 
 import android.app.Activity;
 
-import com.example.shiran.drhelp.entities.RegistrationForm;
+import com.example.shiran.drhelp.entities.forms.RegistrationForm;
 import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.observers.UserLoginObserver;
 import com.example.shiran.drhelp.services.observers.UserRegistrationObserver;
@@ -25,9 +25,9 @@ public interface UserService {
 
     void setUserResetPasswordObserver(UserResetPasswordObserver userResetPasswordObserver);
 
-    String getUserStatuse();
+    String getUserStatus();
 
-    void setUserStatuse(boolean available);
+    void setUserStatus(boolean available);
 
     int getNumberOfUsers();
 

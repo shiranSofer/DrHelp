@@ -1,10 +1,13 @@
-package com.example.shiran.drhelp.entities;
+package com.example.shiran.drhelp.entities.forms;
+
+import com.example.shiran.drhelp.entities.User;
 
 public class RegistrationForm {
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+    private String language;
 
     public RegistrationForm(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
@@ -45,6 +48,14 @@ public class RegistrationForm {
         this.password = password;
     }
 
+    public User toUser(String id){
+        return new User(id, firstName, lastName,
+                email,
+                password,
+                false,
+                language);
+    }
+
     @Override
     public String toString() {
         return "RegistrationForm{" +
@@ -56,4 +67,4 @@ public class RegistrationForm {
     }
 }
 
-//commit
+

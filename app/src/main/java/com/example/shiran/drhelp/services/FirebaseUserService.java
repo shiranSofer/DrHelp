@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.shiran.drhelp.entities.RegistrationForm;
+import com.example.shiran.drhelp.entities.forms.RegistrationForm;
 import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.observables.UserServiceObservable;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -98,15 +98,8 @@ public class FirebaseUserService extends UserServiceObservable {
     private User registrationFormToUser(RegistrationForm registrationForm){
         String token_id = FirebaseInstanceId.getInstance().getToken();
         String userId = firebaseAuth.getUid();
-
-        User user = new User(
-                userId,
-                registrationForm.getFirstName(),
-                registrationForm.getLastName(),
-                registrationForm.getEmail(),
-                registrationForm.getPassword());
+        User user = registrationForm.toUser(userId);
         user.setToken(token_id);
-
         return user;
     }
 
@@ -167,14 +160,14 @@ public class FirebaseUserService extends UserServiceObservable {
     }
 
     @Override
-    public String getUserStatuse() {
-        currentUserId = firebaseAuth.getCurrentUser().getUid();
+    public String getUserStatus() {
+        currentUserId = currentUser.getId();
         return databaseReference.child(currentUserId).child("available").getKey();
     }
 
     @Override
-    public void setUserStatuse(boolean available) {
-        currentUserId = firebaseAuth.getCurrentUser().getUid();
+    public void setUserStatus(boolean available) {
+        currentUserId = currentUser.getId();
         databaseReference.child(currentUserId).child("available").setValue(available);
     }
 
