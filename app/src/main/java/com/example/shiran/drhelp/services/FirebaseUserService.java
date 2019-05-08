@@ -186,7 +186,7 @@ public class FirebaseUserService extends UserServiceObservable {
                     User user = ds.getValue(User.class);
                     if(!user.getId().equals(id)){
                         Log.d("current user", "id = " + id.toString());
-                        if(user.getAvailable()){
+                        if(user.getAvailable() && user.getRole().equals("Translator")){
                             userList.add(user);
                         }
                     }
