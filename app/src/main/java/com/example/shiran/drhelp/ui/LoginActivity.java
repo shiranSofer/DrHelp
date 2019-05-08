@@ -12,9 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shiran.drhelp.R;
+import com.example.shiran.drhelp.entities.Doctor;
+import com.example.shiran.drhelp.entities.Translator;
+import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.FirebaseUserService;
 import com.example.shiran.drhelp.services.UserService;
 import com.example.shiran.drhelp.services.observers.UserLoginObserver;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements UserLoginObserver {
 
@@ -83,9 +90,23 @@ public class LoginActivity extends AppCompatActivity implements UserLoginObserve
     }
 
     @Override
-    public void onLoginSucceed() {
-        Intent intent_toMember = new Intent(getApplicationContext(), AvailabilityActivity.class);
-        startActivity(intent_toMember);
+    public void onLoginSucceed(User user) {
+        if(user instanceof Doctor){
+            Gson gson = new Gson();
+            String userId = user.getId();
+            userService.getAllAvailableUsers(userList -> {
+                Log.d("current user id", userId);
+
+                Intent intent = new Intent(getApplicationContext(), ContactsActivity.class);
+                intent.putExtra("usersList", gson.toJson(userList.toArray(new User[0])));
+                startActivity(intent);
+                return null;
+            });
+        }else if(user instanceof Translator){
+            Intent intent = new Intent(getApplicationContext(), AvailabilityActivity.class);
+            startActivity(intent);
+        }
+
         Log.d("login:", "Authentication succeeded.");
         finish();
     }

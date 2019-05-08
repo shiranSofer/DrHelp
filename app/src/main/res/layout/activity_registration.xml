@@ -19,13 +19,12 @@
         <include layout="@layout/footer_logo_bar"></include>
 
         <!-- Registration Form -->
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dip"
-            android:layout_below="@id/header">
+            android:layout_below="@id/header"
+            android:orientation="vertical"
+            android:padding="10dip">
 
             <!--  First name Label -->
             <android.support.design.widget.TextInputLayout
@@ -38,8 +37,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/firstName"
                     android:singleLine="true"
-                    android:textSize="20sp"/>
-                    <!--android:layout_marginTop="5dip"
+                    android:textSize="20sp" />
+                <!--android:layout_marginTop="5dip"
                     android:layout_marginBottom="20dip"-->
             </android.support.design.widget.TextInputLayout>
 
@@ -52,8 +51,8 @@
                     android:id="@+id/lastName_editText_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
                     android:hint="@string/lastName"
+                    android:singleLine="true"
                     android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
 
@@ -61,57 +60,61 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/email_editText_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
                     android:hint="@string/email"
-                    android:textSize="20sp"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
 
             <!--  Password Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/password_editText_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:inputType="textPassword"
                     android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
                     android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <RadioGroup
                     android:id="@+id/role_radio_group_registration"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12dp">
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
 
                     <android.support.v7.widget.AppCompatRadioButton
                         android:id="@+id/doctor_radio_registration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/doctorRole"
                         android:layout_weight="1"
-                        android:textSize="18sp"
-                        android:textColor="@color/colorPrimary"/>
+                        android:text="@string/doctorRole"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
                     <android.support.v7.widget.AppCompatRadioButton
                         android:id="@+id/translator_radio_registration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/translatorRole"
                         android:layout_weight="1"
-                        android:textSize="18sp"
+                        android:checked="true"
+                        android:text="@string/translatorRole"
                         android:textColor="@color/colorPrimary"
-                        android:checked="true"/>
+                        android:textSize="18sp" />
                 </RadioGroup>
             </android.support.design.widget.TextInputLayout>
 
@@ -119,13 +122,14 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/doctor_license_editText_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:inputType="numberDecimal"
                     android:hint="@string/license"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
                     android:textSize="20sp"
                     android:visibility="gone" />
             </android.support.design.widget.TextInputLayout>
@@ -135,25 +139,24 @@
 
             <android.support.design.button.MaterialButton
                 android:id="@+id/btn_register"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dip"
-                android:text="@string/register"
-                style="@style/Widget.MaterialComponents.Button" />
+                android:layout_marginTop="50dp"
+                android:text="Register" />
 
 
             <!-- Link to Login Screen -->
             <TextView
                 android:id="@+id/link_to_login"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dip"
+                android:layout_height="51dp"
                 android:layout_marginBottom="60dip"
-                android:text="Already has account! Login here"
+                android:layout_marginTop="40dip"
                 android:gravity="center"
-                android:textSize="15sp"
-                android:textColor="@color/colorRegularTextDark"/>
+                android:text="Already has account? Login here"
+                android:textSize="15sp" />
 
         </LinearLayout>
         <!-- Registration Form Ends -->

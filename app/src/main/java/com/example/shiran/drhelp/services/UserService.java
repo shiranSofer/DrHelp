@@ -1,6 +1,7 @@
 package com.example.shiran.drhelp.services;
 
 import android.app.Activity;
+import android.arch.core.util.Function;
 
 import com.example.shiran.drhelp.entities.forms.RegistrationForm;
 import com.example.shiran.drhelp.entities.User;
@@ -21,6 +22,8 @@ public interface UserService {
 
     void resetPassword(String email);
 
+    void getAllAvailableUsers(Function<List<User>, Void> onAvailableUsersArrived);
+
     void logout(User user);
 
     void setUserResetPasswordObserver(UserResetPasswordObserver userResetPasswordObserver);
@@ -31,7 +34,7 @@ public interface UserService {
 
     int getNumberOfUsers();
 
-    List<User> getAllAvailableUsers(String id);
+   // List<User> getAllAvailableUsers(String id);
 
     String getCurrentUserId();
 

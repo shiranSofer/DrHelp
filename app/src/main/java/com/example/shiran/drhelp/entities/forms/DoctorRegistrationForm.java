@@ -10,10 +10,9 @@ public class DoctorRegistrationForm extends RegistrationForm {
                                   String lastName,
                                   String email,
                                   String password,
-                                  String role,
                                   String licenseNumber
                                   ) {
-        super(firstName, lastName, email, password, role);
+        super(firstName, lastName, email, password);
         setLicenseNumber(licenseNumber);
     }
 
@@ -35,7 +34,6 @@ public class DoctorRegistrationForm extends RegistrationForm {
                 user.getPassword(),
                 user.getAvailable(),
                 user.getLanguage(),
-                user.getRole(),
                 licenseNumber);
     }
 

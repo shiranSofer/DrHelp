@@ -1,5 +1,7 @@
 package com.example.shiran.drhelp.entities.forms;
 
+import android.text.TextUtils;
+
 import com.example.shiran.drhelp.entities.User;
 
 public class RegistrationForm {
@@ -7,15 +9,13 @@ public class RegistrationForm {
     private String lastName;
     private String email;
     private String password;
-    private String role;
     private String language;
 
-    public RegistrationForm(String firstName, String lastName, String email, String password, String role) {
+    public RegistrationForm(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.role = role;
     }
 
     public String getFirstName() {
@@ -50,22 +50,14 @@ public class RegistrationForm {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public User toUser(String id) {
         return new User(id, firstName, lastName,
                 email,
                 password,
                 false,
-                language,
-                role);
+                language);
     }
+
 
     @Override
     public String toString() {
@@ -74,7 +66,6 @@ public class RegistrationForm {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
                 '}';
     }
 }

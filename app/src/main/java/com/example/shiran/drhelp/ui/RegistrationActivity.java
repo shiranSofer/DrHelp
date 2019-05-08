@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.shiran.drhelp.R;
+import com.example.shiran.drhelp.entities.forms.DoctorRegistrationForm;
 import com.example.shiran.drhelp.entities.forms.RegistrationForm;
 import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.FirebaseUserService;
@@ -30,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
     private RadioGroup radioGroup_role;
     private MaterialButton button_Register;
     private UserService userService;
-    private String role;
+    private boolean isDoctor = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +49,11 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
         switch (checkedId) {
             case R.id.doctor_radio_registration:
                 editText_userLicense.setVisibility(View.VISIBLE);
-                role = "Doctor";
+                isDoctor = true;
                 break;
             case R.id.translator_radio_registration:
                 editText_userLicense.setVisibility(View.GONE);
-                role = "Translator";
+                isDoctor = false;
                 break;
         }
     }
@@ -64,13 +65,28 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
         String email = editText_userEmail.getText().toString().trim();
         String password = editText_userPassword.getText().toString().trim();
 
-        RegistrationForm registrationForm = new RegistrationForm(
-                firstName, lastName, email, password, role);
+        RegistrationForm registrationForm;
 
-        if(!isValidForm(registrationForm)){
-            Log.d("register-user:", "invalid form.");
-            return;
+        if(isDoctor){
+            String licenseNumber = editText_userLicense.getText().toString();
+            registrationForm = new DoctorRegistrationForm(firstName, lastName, email, password,
+                    licenseNumber);
+
+            if(!isValidDoctorForm((DoctorRegistrationForm) registrationForm)){
+                Log.d("register-doctor:", "invalid form.");
+                return;
+            }
+
+        }else{
+            registrationForm = new RegistrationForm(
+                    firstName, lastName, email, password);
+
+            if(!isValidForm(registrationForm)){
+                Log.d("register-user:", "invalid form.");
+                return;
+            }
         }
+
         Log.d("register-user:", "valid form.");
         userService.registerUser(registrationForm, this);
     }
@@ -103,11 +119,18 @@ public class RegistrationActivity extends AppCompatActivity implements UserRegis
             editText_userPassword.setError("Password Required.");
             return false;
         }
-
         return true;
     }
 
-    public void onUserRegistrationSucceed(User user) {
+    private boolean isValidDoctorForm(DoctorRegistrationForm registrationForm) {
+        if(TextUtils.isEmpty(registrationForm.getLicenseNumber())){
+            editText_userLicense.setError("License Number Required.");
+            return false;
+        }
+        return isValidForm(registrationForm);
+    }
+
+        public void onUserRegistrationSucceed(User user) {
         Toast.makeText(RegistrationActivity.this, "Registration succeeded."
                 , Toast.LENGTH_SHORT).show();
         Intent intent_toLogin = new Intent(getApplicationContext(), LoginActivity.class);

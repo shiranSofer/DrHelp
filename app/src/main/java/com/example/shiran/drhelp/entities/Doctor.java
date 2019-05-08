@@ -3,9 +3,13 @@ package com.example.shiran.drhelp.entities;
 public class Doctor extends User {
     private String licenseNumber;
 
+    public Doctor(){
+
+    }
+
     public Doctor(String id, String firstName, String lastName, String email,
-                  String password, Boolean available, String language, String role, String licenseNumber) {
-        super(id, firstName, lastName, email, password, available, language, role);
+                  String password, Boolean available, String language, String licenseNumber) {
+        super(id, firstName, lastName, email, password, available, language);
         setLicenseNumber(licenseNumber);
     }
 

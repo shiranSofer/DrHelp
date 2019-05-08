@@ -2,12 +2,18 @@ package com.example.shiran.drhelp.services;
 
 
 import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
+import com.example.shiran.drhelp.entities.Doctor;
+import com.example.shiran.drhelp.entities.Translator;
 import com.example.shiran.drhelp.entities.forms.RegistrationForm;
 import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.observables.UserServiceObservable;
+import com.example.shiran.drhelp.services.observers.UserLoginObserver;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,10 +28,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import android.arch.core.util.Function;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.gson.Gson;
 
 public class FirebaseUserService extends UserServiceObservable {
 
@@ -117,11 +125,11 @@ public class FirebaseUserService extends UserServiceObservable {
         }
         else {
             publishAboutLoggingIn(observer -> {
-                observer.onLoginSucceed();
-                acquireToken(firebaseAuth, firestore);
                 currentUserId = firebaseAuth.getCurrentUser().getUid();
-                loadCurrentUser();
-            return null;
+                acquireToken(firebaseAuth, firestore);
+                loadCurrentUser(observer);
+
+                return null;
             });
         }
     }
@@ -177,20 +185,27 @@ public class FirebaseUserService extends UserServiceObservable {
     }
 
     @Override
-    public List<User> getAllAvailableUsers(String id) {
-        List<User> userList = new ArrayList<User>();
+    public void getAllAvailableUsers(Function<List<User>, Void> onAvailableUsersArrived) {
         databaseReference.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<User> userList = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    User user = ds.getValue(User.class);
-                    if(!user.getId().equals(id)){
-                        Log.d("current user", "id = " + id.toString());
-                        if(user.getAvailable() && user.getRole().equals("Translator")){
+                    Log.i("USSR:",new Gson().toJson(ds.getValue(User.class)));
+                    if(ds.hasChild("licenseNumber")){
+                        //Doctor doctor = ds.getValue(Doctor.class);
+
+                    }else{
+                        Translator user = ds.getValue(Translator.class);
+                        Log.i("USSR Translator?", new Gson().toJson(user));
+                        if(user.getAvailable()){
                             userList.add(user);
                         }
                     }
+
                 }
+                onAvailableUsersArrived.apply(userList);
             }
 
             @Override
@@ -198,7 +213,6 @@ public class FirebaseUserService extends UserServiceObservable {
 
             }
         });
-        return userList;
     }
 
     @Override
@@ -221,34 +235,39 @@ public class FirebaseUserService extends UserServiceObservable {
         return firebaseAuth.getCurrentUser().getDisplayName();
     }
 
-    private void loadCurrentUser(){
+    private void loadCurrentUser(UserLoginObserver observer){
 
         firestore.collection("users").document(currentUserId).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                User user = new User();
                 DocumentSnapshot data = task.getResult();
+                User user;
+                if(data.contains("licenseNumber")){
+                    Doctor doctor = new Doctor();
+                    doctor.setLicenseNumber(data.get("licenseNumber").toString());
+                    user = doctor;
+                }else{
+                    user = new Translator();
+                }
                 user.setId(data.get("id").toString());
                 user.setEmail(data.get("email").toString());
                 user.setFirstName(data.get("firstName").toString());
                 user.setLastName(data.get("lastName").toString());
                 Object token = data.get("token");
                 user.setToken(token.toString());
-                user.setRole(data.get("role").toString());
-
                 currentUser = user;
+
+                observer.onLoginSucceed(currentUser);
             }
         });
     }
 
     public void acquireToken(final FirebaseAuth mAuth, final FirebaseFirestore firestore){
         final String tokenId = FirebaseInstanceId.getInstance().getToken();
-        String currentId = mAuth.getCurrentUser().getUid();
-
         Map<String, Object> tokenMap = new HashMap<>();
         tokenMap.put("token", tokenId);
 
-        firestore.collection("users").document(currentId).update(tokenMap);
+        firestore.collection("users").document(currentUserId).update(tokenMap);
     }
 }

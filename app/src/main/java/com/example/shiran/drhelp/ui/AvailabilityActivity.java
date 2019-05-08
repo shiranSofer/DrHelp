@@ -24,7 +24,6 @@ public class AvailabilityActivity extends AppCompatActivity {
     private TextView textView_status;
     private TextView textView_contactList;
     private UserService userService;
-    private List<User> userList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +34,10 @@ public class AvailabilityActivity extends AppCompatActivity {
 
         switchCompat_status.setOnCheckedChangeListener(this::onSwitchButtonPressed);
         textView_contactList.setOnClickListener(this::onContactListButtonPressed);
-
-        userList = new ArrayList<>();
-        String userId = userService.getCurrentUserId();
-        userList = userService.getAllAvailableUsers(userId);
-        Log.d("current user id", userId);
-
     }
 
     private void onContactListButtonPressed(View view) {
-        Gson gson = new Gson();
-        Intent to_contactList_Intent = new Intent(getApplicationContext(), ContactsActivity.class);
-        to_contactList_Intent.putExtra("usersList", gson.toJson(userList.toArray(new User[0])));
-        startActivity(to_contactList_Intent);
+
     }
 
     private void onSwitchButtonPressed(CompoundButton compoundButton, boolean isChecked) {
