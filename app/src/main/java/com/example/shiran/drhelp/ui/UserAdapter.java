@@ -21,6 +21,7 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder>  implements NotificationServiceObserver{
 
+
     private List<User> userList;
     private Context context;
     private NotificationService notificationService;
