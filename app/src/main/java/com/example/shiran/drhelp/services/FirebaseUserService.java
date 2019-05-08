@@ -235,6 +235,7 @@ public class FirebaseUserService extends UserServiceObservable {
                 user.setLastName(data.get("lastName").toString());
                 Object token = data.get("token");
                 user.setToken(token.toString());
+                user.setRole(data.get("role").toString());
 
                 currentUser = user;
             }
