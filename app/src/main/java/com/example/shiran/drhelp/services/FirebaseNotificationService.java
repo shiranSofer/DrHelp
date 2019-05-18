@@ -1,9 +1,10 @@
 package com.example.shiran.drhelp.services;
 
+import android.util.Log;
+
 import com.example.shiran.drhelp.entities.User;
 import com.example.shiran.drhelp.services.observables.NotificationServiceObservable;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -34,6 +35,8 @@ public class FirebaseNotificationService extends NotificationServiceObservable{
                 + fromUser.getLastName()
                 + " is calling you on DrHelp");
         notificationMessage.put("from", currentUserId);
+
+        Log.e("fromUser",fromUser.getFirstName()+fromUser.getLastName()+fromUser.getToken()+toUser.getToken());
 
         String receiverId = toUser.getId();
 
